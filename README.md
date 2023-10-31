@@ -98,13 +98,35 @@ response = getResponse(score, machineActive);
 It will perform a series of UT's and show info on the console regarding the
 obtained result for each one. The output will follow this structure:
 
+```js
+// Test input
+[
+  {
+    score: 75,
+    machineActive: false,
+    expectedResponse: "The machine is off. Please switch it on"
+  },
+  {
+    score: 75,
+    machineActive: true,
+    expectedResponse: "That\'s a great score, you really know your stuff."
+  },
+  {
+    score: 150,
+    machineActive: false,
+    expectedResponse: "The machine is off. Please switch it on"
+  },
+]
+```
+
 ```text
+## UT: getResponse()
+
 testNum | Pass/Fail | score | machineActive [| expectedResponse | response]
 ---
 1 | Pass | 75 | false
 2 | Pass | 75 | true
-3 | Fail | 150 | true | The machine is off. Please switch it on | This is not
-possible, an error has occurred.
+3 | Pass | 150 | false
 ---
-Fails: 1
+Fails: 0
 ```
