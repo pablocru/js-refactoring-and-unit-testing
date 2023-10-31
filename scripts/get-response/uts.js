@@ -13,6 +13,17 @@ function uts() {
   );
   console.log("---");
 
+  /** Stores the possible messages to improve access */
+  const messages = [
+    "The machine is off. Please switch it on",
+    "This is not possible, an error has occurred.",
+    "That was a terrible score — total fail!",
+    "You know some things, but it\'s a pretty bad score. Needs improvement.",
+    "You did a passable job, not bad!",
+    "That\'s a great score, you really know your stuff.",
+    "What an amazing score! Did you cheat? Are you for real?"
+  ];
+
   /* Stores the tests that I want to do.
     It isn't declared because I wont use it later.
     `.forEach` iterates all the tests and performs the UT.
