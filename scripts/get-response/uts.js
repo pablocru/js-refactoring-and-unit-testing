@@ -83,7 +83,7 @@ function uts() {
     // `testStatus` will be `green` if the test pass and `red` if not
     console.log(
       `${testCounter++} | %c${testStatus}%c | ${logScore} | ` +
-      `${machineActive} | ${optionalMsg}`,
+      `${machineActive} ${optionalMsg}`,
       `color: ${areEquals ? 'green' : 'red'};`
     );
 
