@@ -32,6 +32,19 @@ function uts() {
     { score: 75, machineActive: false, expectedResponse: messages[0] },
     { score: 75, machineActive: true, expectedResponse: messages[5] },
     { score: 150, machineActive: false, expectedResponse: messages[0] },
+    { score: -5, machineActive: true, expectedResponse: messages[1] },
+    { score: 105, machineActive: true, expectedResponse: messages[1] },
+    { score: 0, machineActive: true, expectedResponse: messages[2] },
+    { score: 4, machineActive: true, expectedResponse: messages[2] },
+    { score: 19, machineActive: true, expectedResponse: messages[2] },
+    { score: 20, machineActive: true, expectedResponse: messages[3] },
+    { score: 39, machineActive: true, expectedResponse: messages[3] },
+    { score: 40, machineActive: true, expectedResponse: messages[4] },
+    { score: 69, machineActive: true, expectedResponse: messages[4] },
+    { score: 70, machineActive: true, expectedResponse: messages[5] },
+    { score: 89, machineActive: true, expectedResponse: messages[5] },
+    { score: 90, machineActive: true, expectedResponse: messages[6] },
+    { score: 100, machineActive: true, expectedResponse: messages[6] },
   ]
   .forEach(test => {
     /* Use object destructuring to get all the properties 
