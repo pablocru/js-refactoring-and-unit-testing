@@ -4,7 +4,11 @@ function getResponse(score, machineActive) {
   let response;
 
   if (machineActive) {
-    if (score < 0 || score > 100) 
+    if (
+      typeof score !== 'number' ||
+      isNaN(score) ||
+      score < 0 || score > 100
+    )
       response = "This is not possible, an error has occurred.";
     else if (score <= 19) 
       response = "That was a terrible score — total fail!";
