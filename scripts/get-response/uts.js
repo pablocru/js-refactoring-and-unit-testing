@@ -77,8 +77,12 @@ function uts() {
     */
     const optionalMsg = areEquals ? '' : `| ${expectedResponse} | ${response}`;
 
-    /** Prints `""` wrapping the value if `score` is a string */
-    const logScore = typeof score === "string" ? `"${score}"` : score;
+    /** Adds format to the score depending on its type:
+     * - Wrapping the value with `""` if `score` is a string
+     * - Adds a `n` suffix it `score` is a Bigint
+    */
+    const logScore = typeof score === "string" ? `"${score}"` :
+      typeof score === "bigint" ? `${score}n` : score;
 
     // `testStatus` will be `green` if the test pass and `red` if not
     console.log(
