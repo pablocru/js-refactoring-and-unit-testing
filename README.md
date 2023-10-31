@@ -92,3 +92,19 @@ response = getResponse(score, machineActive);
 
 // Don't edit the code below here!
 ```
+
+## Unit Testing
+
+It will perform a series of UT's and show info on the console regarding the
+obtained result for each one. The output will follow this structure:
+
+```text
+testNum | Pass/Fail | score | machineActive [| expectedResponse | response]
+---
+1 | Pass | 75 | false
+2 | Pass | 75 | true
+3 | Fail | 150 | true | The machine is off. Please switch it on | This is not
+possible, an error has occurred.
+---
+Fails: 1
+```
