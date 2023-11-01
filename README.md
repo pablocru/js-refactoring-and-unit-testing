@@ -5,6 +5,11 @@ In this project I'm refactoring the [MDN Conditionals
 and creating Unit Testing in order to check if the changes are working
 properly.
 
+## Table of Contents
+
+- [MDN Conditionals 2 task](#mdn-conditionals-2-task)
+- [Unit Testing](#unit-testing)
+
 ## MDN Conditionals 2 task
 
 I have solved that task by adding a nested `if-else` statement in
