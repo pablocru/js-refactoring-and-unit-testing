@@ -120,6 +120,8 @@ obtained result for each one. The output will follow this structure:
 ```
 
 ```text
+// Test output
+
 ## UT: getResponse()
 
 testNum | Pass/Fail | score | machineActive [| expectedResponse | response]
