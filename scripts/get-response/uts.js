@@ -10,43 +10,44 @@ function uts() {
   );
   console.log("---");
 
-  /** Stores the possible messages to improve access */
-  const messages = [
-    "The machine is off. Please switch it on",
-    "This is not possible, an error has occurred.",
-    "That was a terrible score — total fail!",
-    "You know some things, but it\'s a pretty bad score. Needs improvement.",
-    "You did a passable job, not bad!",
-    "That\'s a great score, you really know your stuff.",
-    "What an amazing score! Did you cheat? Are you for real?"
-  ];
+  // Possible messages
+  const machineOff = "The machine is off. Please switch it on";
+  const error = "This is not possible, an error has occurred.";
+  const terribleScore = "That was a terrible score — total fail!";
+  const badScore =
+    "You know some things, but it\'s a pretty bad score. Needs improvement.";
+  const passableJob = "You did a passable job, not bad!";
+  const greatScore = "That\'s a great score, you really know your stuff.";
+  const amazingScore =
+    "What an amazing score! Did you cheat? Are you for real?";
 
+  // Unit Testings
   const utBattery = [
-    { score: 75, machineActive: false, expectedResponse: messages[0] },
-    { score: 75, machineActive: true, expectedResponse: messages[5] },
-    { score: 150, machineActive: false, expectedResponse: messages[0] },
-    { score: -5, machineActive: true, expectedResponse: messages[1] },
-    { score: 105, machineActive: true, expectedResponse: messages[1] },
-    { score: 0, machineActive: true, expectedResponse: messages[2] },
-    { score: 4, machineActive: true, expectedResponse: messages[2] },
-    { score: 19, machineActive: true, expectedResponse: messages[2] },
-    { score: 20, machineActive: true, expectedResponse: messages[3] },
-    { score: 39, machineActive: true, expectedResponse: messages[3] },
-    { score: 40, machineActive: true, expectedResponse: messages[4] },
-    { score: 69, machineActive: true, expectedResponse: messages[4] },
-    { score: 70, machineActive: true, expectedResponse: messages[5] },
-    { score: 89, machineActive: true, expectedResponse: messages[5] },
-    { score: 90, machineActive: true, expectedResponse: messages[6] },
-    { score: 100, machineActive: true, expectedResponse: messages[6] },
-    { score: "5", machineActive: true, expectedResponse: messages[1] },
-    { score: "", machineActive: true, expectedResponse: messages[1] },
-    { score: " ", machineActive: true, expectedResponse: messages[1] },
-    { score: NaN, machineActive: true, expectedResponse: messages[1] },
-    { score: 10n, machineActive: true, expectedResponse: messages[1] },
-    { score: null, machineActive: true, expectedResponse: messages[1] },
-    { score: undefined, machineActive: true, expectedResponse: messages[1] },
-    { score: true, machineActive: true, expectedResponse: messages[1] },
-    { score: false, machineActive: true, expectedResponse: messages[1] },
+    { score: 75, machineActive: false, expectedResponse: machineOff },
+    { score: 75, machineActive: true, expectedResponse: greatScore },
+    { score: 150, machineActive: false, expectedResponse: machineOff },
+    { score: -5, machineActive: true, expectedResponse: error },
+    { score: 105, machineActive: true, expectedResponse: error },
+    { score: 0, machineActive: true, expectedResponse: terribleScore },
+    { score: 4, machineActive: true, expectedResponse: terribleScore },
+    { score: 19, machineActive: true, expectedResponse: terribleScore },
+    { score: 20, machineActive: true, expectedResponse: badScore },
+    { score: 39, machineActive: true, expectedResponse: badScore },
+    { score: 40, machineActive: true, expectedResponse: passableJob },
+    { score: 69, machineActive: true, expectedResponse: passableJob },
+    { score: 70, machineActive: true, expectedResponse: greatScore },
+    { score: 89, machineActive: true, expectedResponse: greatScore },
+    { score: 90, machineActive: true, expectedResponse: amazingScore },
+    { score: 100, machineActive: true, expectedResponse: amazingScore },
+    { score: "5", machineActive: true, expectedResponse: error },
+    { score: "", machineActive: true, expectedResponse: error },
+    { score: " ", machineActive: true, expectedResponse: error },
+    { score: NaN, machineActive: true, expectedResponse: error },
+    { score: 10n, machineActive: true, expectedResponse: error },
+    { score: null, machineActive: true, expectedResponse: error },
+    { score: undefined, machineActive: true, expectedResponse: error },
+    { score: true, machineActive: true, expectedResponse: error },
+    { score: false, machineActive: true, expectedResponse: error },
   ];
 
   const length = utBattery.length;
