@@ -21,10 +21,7 @@ function uts() {
     "What an amazing score! Did you cheat? Are you for real?"
   ];
 
-  /**
-   * Store each UT performed by `.map` from a test battery
-   */
-  const test = [
+  const utBattery = [
     { score: 75, machineActive: false, expectedResponse: messages[0] },
     { score: 75, machineActive: true, expectedResponse: messages[5] },
     { score: 150, machineActive: false, expectedResponse: messages[0] },
@@ -50,13 +47,13 @@ function uts() {
     { score: undefined, machineActive: true, expectedResponse: messages[1] },
     { score: true, machineActive: true, expectedResponse: messages[1] },
     { score: false, machineActive: true, expectedResponse: messages[1] },
-  ].map(test => ut(test));
+  ];
 
-  const length = test.length;
+  const length = utBattery.length;
   for (let i = 0; i < length; i++) {
     const {
       areEquals, testStatus, logScore, machineActive, optionalMsg
-    } = test[i];
+    } = ut(utBattery[i]);
 
     /** `testStatus` will be `green` if the test pass and `red` if not*/
     const color = `color: ${areEquals ? 'green' : 'red'};`;
