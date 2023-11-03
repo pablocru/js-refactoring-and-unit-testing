@@ -53,7 +53,7 @@ function uts() {
     { score: false, machineActive: true, expectedResponse: messages[1] },
   ].map(test => ut(test));
 
-  let length = test.length;
+  const length = test.length;
   for (let i = 0; i < length; i++) {
     const {areEquals, testStatus, logScore, machineActive, optionalMsg} = test[i];
 
