@@ -21,10 +21,9 @@ function uts() {
     "What an amazing score! Did you cheat? Are you for real?"
   ];
 
-  /* Stores the tests that I want to do.
-    It isn't declared because I wont use it later.
-    `.forEach` iterates all the tests and performs the UT.
-  */
+  /**
+   * Store each UT performed by `.map` from a test battery
+   */
   const test = [
     { score: 75, machineActive: false, expectedResponse: messages[0] },
     { score: 75, machineActive: true, expectedResponse: messages[5] },
