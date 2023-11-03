@@ -1,9 +1,6 @@
 "use strict";
 
 function uts() {
-  /** Shows the test number */
-  let testCounter = 1;
-
   /** Counts how many test have been failed */
   let failCounter = 0;
 
@@ -28,7 +25,7 @@ function uts() {
     It isn't declared because I wont use it later.
     `.forEach` iterates all the tests and performs the UT.
   */
-  [
+  const test = [
     { score: 75, machineActive: false, expectedResponse: messages[0] },
     { score: 75, machineActive: true, expectedResponse: messages[5] },
     { score: 150, machineActive: false, expectedResponse: messages[0] },
@@ -54,47 +51,58 @@ function uts() {
     { score: undefined, machineActive: true, expectedResponse: messages[1] },
     { score: true, machineActive: true, expectedResponse: messages[1] },
     { score: false, machineActive: true, expectedResponse: messages[1] },
-  ]
-  .forEach(test => {
-    /* Use object destructuring to get all the properties 
-      without `test.<property>`
-    */
-    const { score, machineActive, expectedResponse } = test;
+  ].map(test => ut(test));
 
-    /** The response that generates the test `score` and `machineActive` */
-    const response = getResponse(score, machineActive);
+  let length = test.length;
+  for (let i = 0; i < length; i++) {
+    const {areEquals, testStatus, logScore, machineActive, optionalMsg} = test[i];
 
-    /** Compares if the response matches what it's been expected */
-    const areEquals = expectedResponse === response;
+    /** `testStatus` will be `green` if the test pass and `red` if not*/
+    const color = `color: ${areEquals ? 'green' : 'red'};`;
 
-    /** If the responses are equal,
-     * the value will be `Pass` and `Fail` if not
-    */
-    const testStatus = areEquals ? 'Pass' : 'Fail';
-
-    /** If the responses aren't equal,
-     * it will print the expected and current response
-    */
-    const optionalMsg = areEquals ? '' : `| ${expectedResponse} | ${response}`;
-
-    /** Adds format to the score depending on its type:
-     * - Wrapping the value with `""` if `score` is a string
-     * - Adds a `n` suffix it `score` is a Bigint
-    */
-    const logScore = typeof score === "string" ? `"${score}"` :
-      typeof score === "bigint" ? `${score}n` : score;
-
-    // `testStatus` will be `green` if the test pass and `red` if not
-    console.log(
-      `${testCounter++} | %c${testStatus}%c | ${logScore} | ` +
-      `${machineActive} ${optionalMsg}`,
-      `color: ${areEquals ? 'green' : 'red'};`
-    );
-
-    // Increase the counter if the test fails
     if (!areEquals) failCounter++;
-  });
+
+    console.log(
+      `${i} | %c${testStatus}%c | ${logScore} | ` +
+      `${machineActive} ${optionalMsg}`,
+      color
+    );
+  };
 
   console.log("---");
   console.log("Fails: " + failCounter);
 };
+
+function ut(test, testCounter) {
+  // Counter starts in 1
+  testCounter + 1;
+
+  /* Use object destructuring to get all the properties 
+  without `test.<property>` */
+  const { score, machineActive, expectedResponse } = test;
+
+  /** The response that generates the test `score` and `machineActive` */
+  const response = getResponse(score, machineActive);
+
+  /** Compares if the response matches what it's been expected */
+  const areEquals = expectedResponse === response;
+
+  /** If the responses are equal,
+   * the value will be `Pass` and `Fail` if not
+  */
+  const testStatus = areEquals ? 'Pass' : 'Fail';
+
+  /** Adds format to the score depending on its type:
+   * - Wrapping the value with `""` if `score` is a string
+   * - Adds a `n` suffix it `score` is a Bigint
+  */
+  const logScore = typeof score === "string" ? `"${score}"` :
+    typeof score === "bigint" ? `${score}n` : score;
+
+  /** If the responses aren't equal,
+   * it will print the expected and current response
+  */
+  const optionalMsg = areEquals ? '' : `| ${expectedResponse} | ${response}`;
+
+  return {areEquals, testStatus, logScore, machineActive, optionalMsg};
+}
