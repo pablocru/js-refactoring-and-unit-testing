@@ -54,7 +54,9 @@ function uts() {
 
   const length = test.length;
   for (let i = 0; i < length; i++) {
-    const {areEquals, testStatus, logScore, machineActive, optionalMsg} = test[i];
+    const {
+      areEquals, testStatus, logScore, machineActive, optionalMsg
+    } = test[i];
 
     /** `testStatus` will be `green` if the test pass and `red` if not*/
     const color = `color: ${areEquals ? 'green' : 'red'};`;
