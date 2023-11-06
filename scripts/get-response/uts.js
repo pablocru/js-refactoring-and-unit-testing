@@ -62,7 +62,7 @@ function uts() {
     if (!areEquals) failCounter++;
 
     console.log(
-      `${i} | %c${testStatus}%c | ${logScore} | ` +
+      `${i + 1} | %c${testStatus}%c | ${logScore} | ` +
       `${machineActive} ${optionalMsg}`,
       color
     );
@@ -72,10 +72,7 @@ function uts() {
   console.log("Fails: " + failCounter);
 };
 
-function ut(test, testCounter) {
-  // Counter starts in 1
-  testCounter + 1;
-
+function ut(test) {
   /* Use object destructuring to get all the properties 
   without `test.<property>` */
   const { score, machineActive, expectedResponse } = test;
