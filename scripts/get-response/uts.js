@@ -71,7 +71,10 @@ function uts() {
   };
 
   console.log("---");
-  console.log("Fails: " + failCounter);
+  console.log(
+    `Fails: %c${failCounter}%c`,
+    `color: ${failCounter ? 'red' : 'green'};`
+  );
 };
 
 function ut(test) {
