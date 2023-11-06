@@ -21,33 +21,35 @@ function uts() {
   const amazingScore =
     "What an amazing score! Did you cheat? Are you for real?";
 
-  // Unit Testings
+  /** Unit Testings
+   * - [ score, machineActive, expectedResponse ]
+  */
   const utBattery = [
-    { score: 75, machineActive: false, expectedResponse: machineOff },
-    { score: 75, machineActive: true, expectedResponse: greatScore },
-    { score: 150, machineActive: false, expectedResponse: machineOff },
-    { score: -5, machineActive: true, expectedResponse: error },
-    { score: 105, machineActive: true, expectedResponse: error },
-    { score: 0, machineActive: true, expectedResponse: terribleScore },
-    { score: 4, machineActive: true, expectedResponse: terribleScore },
-    { score: 19, machineActive: true, expectedResponse: terribleScore },
-    { score: 20, machineActive: true, expectedResponse: badScore },
-    { score: 39, machineActive: true, expectedResponse: badScore },
-    { score: 40, machineActive: true, expectedResponse: passableJob },
-    { score: 69, machineActive: true, expectedResponse: passableJob },
-    { score: 70, machineActive: true, expectedResponse: greatScore },
-    { score: 89, machineActive: true, expectedResponse: greatScore },
-    { score: 90, machineActive: true, expectedResponse: amazingScore },
-    { score: 100, machineActive: true, expectedResponse: amazingScore },
-    { score: "5", machineActive: true, expectedResponse: error },
-    { score: "", machineActive: true, expectedResponse: error },
-    { score: " ", machineActive: true, expectedResponse: error },
-    { score: NaN, machineActive: true, expectedResponse: error },
-    { score: 10n, machineActive: true, expectedResponse: error },
-    { score: null, machineActive: true, expectedResponse: error },
-    { score: undefined, machineActive: true, expectedResponse: error },
-    { score: true, machineActive: true, expectedResponse: error },
-    { score: false, machineActive: true, expectedResponse: error },
+    [ 75, false, machineOff ],
+    [ 75, true, greatScore ],
+    [ 150, false, machineOff ],
+    [ -5, true, error ],
+    [ 105, true, error ],
+    [ 0, true, terribleScore ],
+    [ 4, true, terribleScore ],
+    [ 19, true, terribleScore ],
+    [ 20, true, badScore ],
+    [ 39, true, badScore ],
+    [ 40, true, passableJob ],
+    [ 69, true, passableJob ],
+    [ 70, true, greatScore ],
+    [ 89, true, greatScore ],
+    [ 90, true, amazingScore ],
+    [ 100, true, amazingScore ],
+    [ "5", true, error ],
+    [ "", true, error ],
+    [ " ", true, error ],
+    [ NaN, true, error ],
+    [ 10n, true, error ],
+    [ null, true, error ],
+    [ undefined, true, error ],
+    [ true, true, error ],
+    [ false, true, error ],
   ];
 
   const length = utBattery.length;
@@ -73,9 +75,9 @@ function uts() {
 };
 
 function ut(test) {
-  /* Use object destructuring to get all the properties 
-  without `test.<property>` */
-  const { score, machineActive, expectedResponse } = test;
+  const score = test[0],
+    machineActive = test[1],
+    expectedResponse = test[2];
 
   /** The response that generates the test `score` and `machineActive` */
   const response = getResponse(score, machineActive);
