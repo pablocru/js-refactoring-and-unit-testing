@@ -58,7 +58,7 @@ function uts() {
   for (let i = 0; i < length; i++) {
     const {
       areEquals, testStatus, logScore, machineActive, optionalMsg
-    } = ut(utBattery[i]);
+    } = ut(utBattery[i][0], utBattery[i][1], utBattery[i][2]);
 
     /** `testStatus` will be `green` if the test pass and `red` if not*/
     const color = `color: ${areEquals ? 'green' : 'red'};`;
@@ -79,11 +79,7 @@ function uts() {
   );
 };
 
-function ut(test) {
-  const score = test[0],
-    machineActive = test[1],
-    expectedResponse = test[2];
-
+function ut(score, machineActive, expectedResponse) {
   /** The response that generates the test `score` and `machineActive` */
   const response = getResponse(score, machineActive);
 
