@@ -22,36 +22,38 @@ function uts() {
     "What an amazing score! Did you cheat? Are you for real?";
 
   /** Unit Testings
-   * - [ score, machineActive, expectedResponse ]
+   * - [0] score
+   * - [1] expectedResponse
+   * - [2] [machineActive] `optional`
   */
   const utBattery = [
-    [ 75, false, machineOff ],
-    [ 75, true, greatScore ],
-    [ 150, false, machineOff ],
-    [ -5, true, error ],
-    [ 105, true, error ],
-    [ 0, true, terribleScore ],
-    [ 4, true, terribleScore ],
-    [ 19, true, terribleScore ],
-    [ 20, true, badScore ],
-    [ 39, true, badScore ],
-    [ 40, true, passableJob ],
-    [ 69, true, passableJob ],
-    [ 70, true, greatScore ],
-    [ 89, true, greatScore ],
-    [ 90, true, amazingScore ],
-    [ 100, true, amazingScore ],
-    [ "5", true, error ],
-    [ "", true, error ],
-    [ " ", true, error ],
-    [ NaN, true, error ],
-    [ 10n, true, error ],
-    [ null, true, error ],
-    [ undefined, true, error ],
-    [ true, true, error ],
-    [ false, true, error ],
-    [ 19.5, true, badScore ],
-    [ "19,5", true, error ],
+    [ 75, machineOff, false ],
+    [ 75, greatScore ],
+    [ 150, machineOff, false ],
+    [ -5, error ],
+    [ 105, error ],
+    [ 0, terribleScore ],
+    [ 4, terribleScore ],
+    [ 19, terribleScore ],
+    [ 20, badScore ],
+    [ 39, badScore ],
+    [ 40, passableJob ],
+    [ 69, passableJob ],
+    [ 70, greatScore ],
+    [ 89, greatScore ],
+    [ 90, amazingScore ],
+    [ 100, amazingScore ],
+    [ "5", error ],
+    [ "", error ],
+    [ " ", error ],
+    [ NaN, error ],
+    [ 10n, error ],
+    [ null, error ],
+    [ undefined, error ],
+    [ true, error ],
+    [ false, error ],
+    [ 19.5, badScore ],
+    [ "19,5", error ],
   ];
 
   const length = utBattery.length;
@@ -79,7 +81,7 @@ function uts() {
   );
 };
 
-function ut(score, machineActive, expectedResponse) {
+function ut(score, expectedResponse, machineActive = true) {
   /** The response that generates the test `score` and `machineActive` */
   const response = getResponse(score, machineActive);
 
