@@ -50,6 +50,8 @@ function uts() {
     [ undefined, true, error ],
     [ true, true, error ],
     [ false, true, error ],
+    [ 19.5, true, badScore ],
+    [ "19,5", true, error ],
   ];
 
   const length = utBattery.length;
